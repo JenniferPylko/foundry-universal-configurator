@@ -25,7 +25,8 @@
     "recommends": [
       {
         "id": "_CodeMirror",
-        "type": "module"
+        "type": "module",
+        "compatibility": {}
       }
     ]
   },
