@@ -30,5 +30,6 @@
       }
     ]
   },
-  "manifest": "https://github.com/JenniferPylko/foundry-universal-configurator/blob/main/module.json"
+  "manifest": "https://github.com/JenniferPylko/foundry-universal-configurator/blob/main/module.json",
+  "download": "https://github.com/JenniferPylko/foundry-universal-configurator/releases/download/v0.0.1/foundry-universal-configurator-main.zip"
 }
