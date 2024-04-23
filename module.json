@@ -2,7 +2,7 @@
   "id": "jenny-universal-configurator",
   "title": "jenny's universal foundry configurator",
   "description": "<i>WARNING: YOU CAN EASILY MAKE YOUR WORLD UNLOADABLE</i><br />\nthis is a gui to allow editing literally any javascript object that a module's esmodules files can access. it's a bit like surgery on your foundry world: extremely precise and powerful, but with the risk of killing the patient",
-  "version": "0.0.1a",
+  "version": "0.0.2",
   "authors": [
     {
       "name": "jenny",
@@ -31,5 +31,5 @@
     ]
   },
   "manifest": "https://raw.githubusercontent.com/JenniferPylko/foundry-universal-configurator/main/module.json",
-  "download": "https://github.com/JenniferPylko/foundry-universal-configurator/releases/download/v0.0.2/foundry-universal-configurator-main.zip"
+  "download": "https://github.com/JenniferPylko/foundry-universal-configurator/archive/refs/tags/v0.0.2.zip"
 }
