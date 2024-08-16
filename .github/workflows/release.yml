@@ -5,7 +5,7 @@ name: Package Release from Tag
 
 on:
   push:
-    tags: [ "*" ]
+    tags: [ "*.*.*" ]
 
 jobs:
   build:
@@ -19,32 +19,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        path: release-data
-    - uses: actions/checkout@v4
-      with:
-        ref: module-json
-        path: module-json
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }} build
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: |
-        pushd release-data
-        ./build.sh
+    - env:
+        GITHUB_REF: ${{ github.ref }}
+      run: |
+        mkdir -p build
+        node .github/workflows/build.js
         pushd build
-        zip -r ../../build.zip .
+        zip -r ../module.zip .
         popd
-        popd
-        rm module-json/module.json
-        cp release-data/build/module.json module-json/module.json
-        cp module-json/module.json module-json/module-${{ github.ref }}.json
+    - name: Upload Release
+      id: upload_release
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        automatic_release_tag: "latest"
+        files: |
+          module.json
+          module.zip
+    - env:
+        GITHUB_REF: ${{ github.ref }}
+        FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}
+      run: node .github/workflows/release.js
         
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-      
